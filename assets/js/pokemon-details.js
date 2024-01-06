@@ -1,10 +1,8 @@
-const pokemon = {};
-
 const pokemonDetails = document.getElementById("pokeCard");
 const pokemonName = document.getElementById("pokemonName")
-const pokemonCardBody = document.getElementById("pokemonCardBody");
 const pokemonMovesArea = document.getElementById("pokemonMoves");
 const pokemonAbilitiesArea = document.getElementById("pokemonAbilities");
+const pokemonBaseExperience = document.getElementById("baseExperience")
 const pokemonStatsArea = document.getElementById("pokemonStatsBoard");
 
 function redirectToDetails(pokemonId) { 
@@ -42,28 +40,23 @@ async function getPokemonInfo(pokemonId) {
                      .then((response) => response.json());
                      
 
-    // const loggs = await fetch(url)
-    //                  .then((response) => console.log(response.json()));
-
-    //console.log(pokemonRequest);             
-    //console.log(pokemonMoves);
+    const loggs = await fetch(url)
+                     .then((response) => console.log(response.json()));
 
     pokemonSprite(pokemon);
+
     //pokemon background color
     pokemonDetails.classList.add(`${pokemon.types[0].type.name}`);
-    
 
     pokemonName.innerHTML += `#${pokemonId} ${pokemon.name}`;
 
-    pokemonMovesArea.innerHTML += `${pokemonMoves}`;
+    pokemonBaseExperience.innerHTML += pokemon.base_experience;
 
     pokemonAbilitiesArea.innerHTML += `${pokemonAbilities.join(' / ')}`;
 
+    pokemonMovesArea.innerHTML += `${pokemonMoves}`;
+
     pokemonStatsArea.innerHTML += pokemon.stats.map(pokemonStats).join('');
-
-    //console.log(pokemon.stats.map((baseStats) => baseStats.base_stat))
-
-    //console.log(pokemon.stats.map(pokemonStats));
 
     //change the color of the progress bar according with stats value
     ChangeProgressBarColor();
