@@ -1,8 +1,9 @@
 const pokemonDetails = document.getElementById("pokeCard");
-const pokemonName = document.getElementById("pokemonName")
+const pokemonName = document.getElementById("pokemonName");
+const pokemonTypesArea = document.getElementById("pokemonTypes");
 const pokemonMovesArea = document.getElementById("pokemonMoves");
 const pokemonAbilitiesArea = document.getElementById("pokemonAbilities");
-const pokemonBaseExperience = document.getElementById("baseExperience")
+const pokemonBaseExperience = document.getElementById("baseExperience");
 const pokemonStatsArea = document.getElementById("pokemonStatsBoard");
 
 function redirectToDetails(pokemonId) { 
@@ -43,12 +44,15 @@ async function getPokemonInfo(pokemonId) {
     const loggs = await fetch(url)
                      .then((response) => console.log(response.json()));
 
+
     pokemonSprite(pokemon);
 
     //pokemon background color
     pokemonDetails.classList.add(`${pokemon.types[0].type.name}`);
 
     pokemonName.innerHTML += `#${pokemonId} ${pokemon.name}`;
+
+    pokemonTypesArea.innerHTML += `${pokemon.types.map(pokemonTypes).join('')}`
 
     pokemonBaseExperience.innerHTML += pokemon.base_experience;
 
@@ -68,6 +72,12 @@ function movesList(pokemonMoves){
         ${pokemonMoves.move.name}
     </p>
     `
+}
+
+function pokemonTypes(pokemon){
+    return `
+            <span class="${pokemon.type.name}">${pokemon.type.name}</span> 
+     `
 }
 
 function pokemonStats(pokemon){

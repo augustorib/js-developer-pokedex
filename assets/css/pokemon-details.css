@@ -14,7 +14,23 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    text-shadow: 2px 2px 4px #000000;
 }
+
+#pokemonTypes {
+    margin: 7px;
+    text-align: center;
+}
+
+#pokemonTypes span{
+    color: #fff;
+    padding: .25rem .5rem;
+    margin: .25rem 0;
+    font-size: 1.2rem;
+    border-radius: 1rem;
+    filter: brightness(1.1);
+}
+
 .pokemonCardBody{
     flex: 1 1 auto;
     padding: 1rem 1rem;
