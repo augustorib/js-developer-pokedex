@@ -165,4 +165,22 @@
 }
 
 
+@media screen and (max-width: 620px) {
+    .formControl {
+        border: 2px solid;
+        background-color: #fff;
+        text-transform: capitalize;
+        font-size: 10px;
+        width: 12rem;
+    }
+
+    #pokemonStatsBoard{
+        width: 25rem;
+        margin-bottom: 5rem;
+    }
+
+    .moveListTitle {
+       margin-top: 50px ;
+    }
+}
 
