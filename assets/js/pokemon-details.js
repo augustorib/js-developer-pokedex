@@ -14,7 +14,7 @@ function redirectToDetails(pokemonId) {
 
 document.addEventListener('DOMContentLoaded', function () {
     
-    // Obtém o parâmetro da URL
+    // get parameter from URL
     const params = new URLSearchParams(window.location.search);
     const pokemonId = params.get('pokemonId');
 
@@ -39,10 +39,6 @@ async function getPokemonInfo(pokemonId) {
     
     const pokemon = await fetch(url)
                      .then((response) => response.json());
-                     
-
-    const loggs = await fetch(url)
-                     .then((response) => console.log(response.json()));
 
 
     pokemonSprite(pokemon);
@@ -63,7 +59,7 @@ async function getPokemonInfo(pokemonId) {
     pokemonStatsArea.innerHTML += pokemon.stats.map(pokemonStats).join('');
 
     //change the color of the progress bar according with stats value
-    ChangeProgressBarColor();
+    changeProgressBarColor();
 }
 
 
@@ -92,7 +88,7 @@ function pokemonStats(pokemon){
     `
 }
 
-function ChangeProgressBarColor(){
+function changeProgressBarColor(){
 
     const statNumber  = document.getElementsByClassName("statNumber");
     const progressBar = document.getElementsByClassName("statBar");
